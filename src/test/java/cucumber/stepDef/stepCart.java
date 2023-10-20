@@ -12,12 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class stepSwagLabs {
+public class stepCart {
     WebDriver driver;
     String baseUrl = "https://www.saucedemo.com/";
-
-    @Given("Login page Swag Labs")
-    public void login_page_swag_labs(){
+    @Given("User on main page with item displayed")
+    public void userOnMainPageWithItemDisplayed() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -27,46 +26,14 @@ public class stepSwagLabs {
         //Assert logo di page login
         String loginPageAssert = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]")).getText();
         Assert.assertEquals(loginPageAssert,"Swag Labs");
-    }
-
-    @When("Input username")
-    public void inputUsername() {
+        //Input credential
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
-    }
-
-    @And("Input password")
-    public void inputPassword() {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
-    }
-
-    @And("Click login button")
-    public void clickLoginButton() {
+        //Click login button
         driver.findElement(By.id("login-button")).click();
-    }
-
-    @Then("User on main page")
-    public void userOnMainPage() {
+        //Assert main page
         String mainPageAssert = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[1]/div[2]/div")).getText();
         Assert.assertEquals(mainPageAssert,"Swag Labs");
-        driver.close();
-    }
-
-    @And("Input invalid password")
-    public void inputInvalidPassword() {
-        driver.findElement(By.id("password")).sendKeys("12345");
-    }
-
-    @Then("User get error message")
-    public void userGetErrorMessage() {
-        String loginErrorSign = driver.findElement(By.xpath("//h3[@data-test='error']")).getText();
-        Assert.assertEquals(loginErrorSign,"Epic sadface: Username and password do not match any user in this service");
-        driver.close();
-    }
-
-    @Then("User on main page with item displayed")
-    public void userOnMainPageWithItemDisplayed() {
-        String mainPageAssert = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[1]/div[2]/div")).getText();
-        Assert.assertEquals(mainPageAssert, "Swag Labs");
     }
 
     @And("Click item Add to Cart button")
@@ -74,7 +41,7 @@ public class stepSwagLabs {
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
     }
 
-    @And("Click Cart icon")
+    @When("Click Cart icon")
     public void clickCartIcon() {
         driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a")).click();
     }
