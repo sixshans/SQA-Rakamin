@@ -1,2 +1,2 @@
 # SQA-Rakamin
-Homework Week 6 Selenium and Cucumber 
+Saucedemo.com testing using Selenium and Cucumber 
