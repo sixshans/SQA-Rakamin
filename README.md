@@ -1,2 +1,2 @@
 # SQA-Rakamin
-Saucedemo.com testing using Selenium and Cucumber 
+Saucedemo.com automation testing using Selenium and Cucumber 
